@@ -15,7 +15,7 @@ export function Thumbnail({ photo, className }: ThumbnailProps) {
       <div className="overflow-hidden">
         <Image
           src={photo.webformatURL}
-          alt={photo.webformatURL}
+          alt={photo.id.toString()}
           width={photo.webformatWidth}
           height={photo.webformatHeight}
           className={cn(

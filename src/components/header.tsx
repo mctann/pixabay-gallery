@@ -8,9 +8,10 @@ import { Form, FormControl, FormField, FormItem } from "./ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+
 export function Header() {
-  const searchParams = useSearchParams()!;
+  const router = useRouter();
 
   const FormSchema = z.object({
     search: z.string(),
@@ -23,9 +24,11 @@ export function Header() {
     },
   });
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    const params = new URLSearchParams(searchParams);
-    params.set("search", data.search);
-
+    if (data.search){
+      router.push(`/results/${data.search}`);
+      form.reset();
+    }
+    
   }
   return (
     <header className="bg-white shadow-lg w-full">

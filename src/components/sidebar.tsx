@@ -1,11 +1,37 @@
-import React from "react";
+"use client"
+import React, { useCallback, useEffect, useState } from "react";
 import { Shapes, Ratio, Star, Palette } from "lucide-react";
 import { Button } from "./ui/button";
 import { ScrollArea } from "./ui/scroll-area";
 import { Switch } from "./ui/switch";
 import { Label } from "./ui/label";
+import { useRouter } from "next/router";
+
 
 export function Sidebar() {
+  const router = useRouter()
+  const [isLandscape, setIsLandscape] = useState(false);
+
+  const handleLandscapeClick = () => {
+    setIsLandscape((prev) => !prev);
+  };
+
+  const updateOrientationParam = useCallback(() => {
+    const params = new URLSearchParams(searchParams);
+    if (isLandscape) {
+      params.set("orientation", "landscape");
+    } else {
+      params.delete("orientation");
+    }
+
+    console.log("params", params)
+  }, [isLandscape]);
+
+  useEffect(() => {
+    updateOrientationParam();
+  }, [isLandscape,updateOrientationParam]);
+
+  
   return (
     <ScrollArea className="whitespace-nowrap">
       <div className="space-y-4 pb-8">
@@ -25,7 +51,17 @@ export function Sidebar() {
           <span className="font-semibold">Orientation</span>
         </div>
         <div className="flex space-x-2">
-          <Button variant={"outline"}>Landscape</Button>
+          <Button
+            variant={"outline"}
+            onClick={handleLandscapeClick}
+            className={` ${
+              isLandscape
+                ? "bg-primary text-white"
+                : "border-gray-300 text-gray-700"
+            } `}
+          >
+            Landscape
+          </Button>
           <Button variant={"outline"}>Portrait</Button>
         </div>
       </div>
@@ -36,17 +72,17 @@ export function Sidebar() {
         </div>
         <div className="flex space-x-2">
           <div className="flex items-center space-x-2">
-          <button className="w-6 h-6 bg-red-400 rounded-full" />
-          <button className="w-6 h-6 bg-orange-400 rounded-full" />
-          <button className="w-6 h-6 bg-yellow-400 rounded-full" />
-          <button className="w-6 h-6 bg-green-400 rounded-full" />
-          <button className="w-6 h-6 bg-cyan-400 rounded-full" />
-          <button className="w-6 h-6 bg-blue-400 rounded-full" />
-          <button className="w-6 h-6 bg-purple-400 rounded-full" />
-          <button className="w-6 h-6 bg-pink-400 rounded-full" />
-          <button className="w-6 h-6 bg-white border rounded-full" />
-          <button className="w-6 h-6 bg-gray-400 rounded-full" />
-          <button className="w-6 h-6 bg-black rounded-full" />
+            <button className="w-6 h-6 bg-red-400 rounded-full" />
+            <button className="w-6 h-6 bg-orange-400 rounded-full" />
+            <button className="w-6 h-6 bg-yellow-400 rounded-full" />
+            <button className="w-6 h-6 bg-green-400 rounded-full" />
+            <button className="w-6 h-6 bg-cyan-400 rounded-full" />
+            <button className="w-6 h-6 bg-blue-400 rounded-full" />
+            <button className="w-6 h-6 bg-purple-400 rounded-full" />
+            <button className="w-6 h-6 bg-pink-400 rounded-full" />
+            <button className="w-6 h-6 bg-white border rounded-full" />
+            <button className="w-6 h-6 bg-gray-400 rounded-full" />
+            <button className="w-6 h-6 bg-black rounded-full" />
           </div>
         </div>
       </div>
