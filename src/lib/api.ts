@@ -1,13 +1,18 @@
 import { PixabayResponse } from "@/types/photos";
 
 export async function fetchImages(
-  params?: string
+  params?: string,
+  searchParams?: string
 ): Promise<PixabayResponse | undefined> {
   try {
     let url = `https://pixabay.com/api/?key=${process.env.NEXT_PUBLIC_PIXABAY_KEY}`;
 
     if (params !== undefined && params !== "") {
       url += `&q=${params}`;
+    }
+
+    if (searchParams !== undefined && searchParams !== ""){
+      url += `&${searchParams}`;
     }
     // Send a GET request to the provided URL with an Authorization header containing an API key
     const res = await fetch(url);

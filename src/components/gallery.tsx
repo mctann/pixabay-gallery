@@ -5,10 +5,11 @@ import { Key } from "react";
 
 type Props = {
 	params?: string;
+  searchParams?: string;
 };
 
-export async function Gallery({ params }: Props) {
-    const images: PixabayResponse | undefined = await fetchImages(params);
+export async function Gallery({ params, searchParams }: Props) {
+    const images: PixabayResponse | undefined = await fetchImages(params, searchParams);
     const { hits } =  images ?? { hits: [] };
     return (
         <div className="grid grid-cols-3 gap-4">

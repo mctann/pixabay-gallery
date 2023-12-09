@@ -38,7 +38,7 @@ export function Header() {
         </h1>
         <div className="flex space-x-4 w-full">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
               <FormField
                 control={form.control}
                 name="search"
