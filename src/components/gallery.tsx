@@ -12,7 +12,7 @@ export async function Gallery({ params, searchParams }: Props) {
     const images: PixabayResponse | undefined = await fetchImages(params, searchParams);
     const { hits } =  images ?? { hits: [] };
     return (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-3 gap-4">
         {hits.map((result: Photo, index: Key) => {
         return <Thumbnail key={index} photo={result} />;
       })}

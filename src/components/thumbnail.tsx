@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn, formatNumber } from "@/lib/utils";
 import { Photo } from "@/types/photos";
 import Image from "next/image";
 import React from "react";
@@ -19,7 +19,7 @@ export function Thumbnail({ photo, className }: ThumbnailProps) {
           width={photo.webformatWidth}
           height={photo.webformatHeight}
           className={cn(
-            "h-auto w-auto object-cover  rounded-md transition-all hover:scale-105 cursor-pointer"
+            "h-auto w-full md:w-auto object-cover  rounded-md transition-all hover:scale-105 cursor-pointer"
           )}
         />
         <div className="px-2 py-4 flex items-center space-x-2 ">
@@ -35,13 +35,13 @@ export function Thumbnail({ photo, className }: ThumbnailProps) {
               <div className="flex space-x-1 justify-center items-center">
                 <HeartIcon size={16} />
                 <span className="text-muted-background text-xs">
-                  {photo.likes}
+                {formatNumber(photo.likes)}
                 </span>
               </div>
               <div className="flex space-x-1 justify-center items-center">
               <DownloadCloud size={16}/>
                 <span className="text-muted-background text-xs">
-                  {photo.downloads}
+                  {formatNumber(photo.downloads)}
                 </span>
               </div>
             </div>

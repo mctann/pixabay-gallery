@@ -33,8 +33,6 @@ export function Sidebar() {
     router.push(`${pathname}${query}`);
   };
 
-  // image type
-
   const handleButtonClick = (key: string, value: string) => {
     let queryParamsValue = "";
     // image type

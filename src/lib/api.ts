@@ -5,6 +5,7 @@ export async function fetchImages(
   searchParams?: string
 ): Promise<PixabayResponse | undefined> {
   try {
+   
     let url = `https://pixabay.com/api/?key=${process.env.NEXT_PUBLIC_PIXABAY_KEY}`;
 
     if (params !== undefined && params !== "") {
@@ -28,6 +29,6 @@ export async function fetchImages(
     return response;
   } catch (error) {
     // Handle any errors that occur during the execution of the function
-    if (error instanceof Error) console.log(error.stack);
+    if (error instanceof Error) console.log(error);
   }
 }

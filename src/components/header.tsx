@@ -26,7 +26,7 @@ export function Header() {
   function onSubmit(data: z.infer<typeof FormSchema>) {
     if (data.search){
       router.push(`/results/${data.search}`);
-      form.reset();
+     form.reset();
     }
     
   }
@@ -57,9 +57,9 @@ export function Header() {
             <li>About</li>
             <li>Settings</li>
           </ul>
-          <Button variant={"outline"} className="block md:hidden">
+          {/* <Button variant={"outline"} className="block md:hidden">
             <SlidersHorizontal />
-          </Button>
+          </Button> */}
         </div>
       </div>
     </header>
