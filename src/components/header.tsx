@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export function Header() {
   const router = useRouter();
@@ -34,7 +35,7 @@ export function Header() {
     <header className="bg-white shadow-lg w-full">
       <div className="flex items-center p-4 space-x-2">
         <h1 className="text-sm md:text-xl font-bold tracking-tight text-gray-900 md:w-[400px]">
-          Pixabye Gallery
+          <Link href="/">Pixabye Gallery</Link>
         </h1>
         <div className="flex space-x-4 w-full">
           <Form {...form}>

@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export function formatNumber(num: number): string {
   if (num >= 1000000) {
       const millionValue = num / 1000000;
-      return `${millionValue.toFixed(3)}M`;
+      return `${millionValue.toFixed(1)}M`;
   } else if (num >= 1000) {
       const thousandValue = num / 1000;
       return `${thousandValue.toFixed(0)}K`;

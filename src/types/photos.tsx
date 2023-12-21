@@ -3,9 +3,14 @@ export interface Photo {
     webformatURL: string
     webformatWidth: number
     webformatHeight: number
+    largeImageURL: string
+    imageHeight: number
+    imageWidth: number
     views: number
     downloads: number
     likes: number
+    comments: number
+    imageSize: number
     tags: String
     user: String
     userImageURL: string
